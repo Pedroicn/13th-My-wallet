@@ -24,7 +24,6 @@ class Login extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const { dispatch, history } = this.props;
-    console.log(this.props);
     const { email } = this.state;
     dispatch(getUserAction(email));
     history.push('/carteira');
@@ -42,7 +41,7 @@ class Login extends React.Component {
   render() {
     const { email, senha, isDisable } = this.state;
     return (
-      <form onSubmit={ this.handleSubmit } id="login-form">
+      <form onSubmit={ this.handleSubmit } className="login-form">
         <label htmlFor="email">
           E-mail:
           <input
