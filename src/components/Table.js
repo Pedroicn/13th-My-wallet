@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Table extends Component {
+  renderizaCambio = (expense) => {
+    const cambio = Number(expense.exchangeRates[expense.currency].ask);
+    return cambio.toFixed(2);
+  };
+
+  renderizaConvercao = (expense) => {
+    const convercao = Number(expense.value * expense.exchangeRates[expense.currency].ask);
+    return convercao.toFixed(2);
+  };
+
   render() {
+    const { expenses } = this.props;
+    console.log(expenses);
     return (
       <section>
         <caption>
@@ -21,11 +35,34 @@ class Table extends Component {
               <th>Editar/Excluir</th>
             </tr>
           </thead>
-
+          <tbody>
+            {
+              expenses.length === 0 ? <p>Não há despesas</p> : expenses.map((expense) => (
+                <tr key={ expense.id }>
+                  <td>{ expense.description }</td>
+                  <td>{ expense.tag }</td>
+                  <td>{ expense.method }</td>
+                  <td>{ Number(expense.value).toFixed(2) }</td>
+                  <td>{ expense.exchangeRates[expense.currency].name }</td>
+                  <td>{ this.renderizaCambio(expense) }</td>
+                  <td>{ this.renderizaConvercao(expense) }</td>
+                  <td>Real</td>
+                </tr>
+              ))
+            }
+          </tbody>
         </table>
       </section>
     );
   }
 }
 
-export default Table;
+const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
+});
+
+Table.propTypes = {
+  expenses: PropTypes.arrayOf(PropTypes.shape).isRequired,
+};
+
+export default connect(mapStateToProps)(Table);
