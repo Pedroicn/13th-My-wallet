@@ -1,6 +1,7 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // novo commit
 import {
+  ATUALIZA_DESPESA,
   GET_EXPENSES,
   GET_CURRENCIES_FAILURE,
   GET_CURRENCIES_SUCCESS } from '../actions';
@@ -27,12 +28,11 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       expenses: [...state.expenses, action.payload],
     };
-  // case GET_SUM:
-  //   return {
-  //     ...state,
-  //     sum: state.expenses.map((item) => item.value),
-  //     // .reduce((a, b) => Number(a) + Number(b)),
-  //   };
+  case ATUALIZA_DESPESA:
+    return {
+      ...state,
+      expenses: action.payload,
+    };
   case GET_CURRENCIES_FAILURE:
     return {
       ...state,
