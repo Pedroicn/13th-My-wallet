@@ -1,4 +1,5 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
+// novo commit
 import {
   GET_EXPENSES,
   GET_CURRENCIES_FAILURE,
