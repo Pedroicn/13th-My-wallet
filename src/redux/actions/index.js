@@ -2,20 +2,20 @@
 import getApiCurrencies from '../../tests/helpers/fetchApi';
 
 export const GET_USER_INFORMATION = 'GET_USER_INFORMATION';
-// export const MANAGE_WALLET = 'MANAGE_WALLET';
-// export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const GET_CURRENCIES_SUCCESS = 'GET_CURRENCIES_SUCCESS';
 export const GET_CURRENCIES_FAILURE = 'GET_CURRENCIES_FAILURE';
+export const GET_EXPENSES = 'GET_EXPENSES';
+// export const GET_SUM = 'GET_SUM';
 
 export const getUserAction = (payload) => ({
   type: GET_USER_INFORMATION,
   payload,
 });
 
-// export const manageWalletAction = (payload) => ({
-//   type: MANAGE_WALLET,
-//   payload,
-// });
+export const getExpensesData = (payload) => ({
+  type: GET_EXPENSES,
+  payload,
+});
 
 // export const getCurrencies = () => ({
 //   type: GET_CURRENCIES,
@@ -30,6 +30,11 @@ export const getCurrenciesFailure = (error) => ({
   type: GET_CURRENCIES_FAILURE,
   error,
 });
+
+// export const getSumAction = (payload) => ({
+//   type: GET_SUM,
+//   payload,
+// });
 
 export function getCurrenciesThunk() {
   return async (dispatch) => {
