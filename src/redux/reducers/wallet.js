@@ -1,6 +1,7 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // novo commit
 import {
+  EDIT_EXPENSE,
   ATUALIZA_DESPESA,
   GET_EXPENSES,
   GET_CURRENCIES_FAILURE,
@@ -37,6 +38,12 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       error: action.error,
+    };
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.payload,
     };
   default:
     return state;
