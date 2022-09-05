@@ -5,7 +5,7 @@ import renderWithRouterAndRedux from './helpers/renderWith';
 import Wallet from '../pages/Wallet';
 import App from '../App';
 import mockData from './helpers/mockData';
-// import WalletForm from '../components/WalletForm';
+import WalletForm from '../components/WalletForm';
 
 const state = {
   user: {
@@ -166,13 +166,14 @@ describe('testa a page Wallet', () => {
     expect(currencyField).toHaveTextContent('BRL');
   });
 
-  // it('Verifica se a função é chamada', () => {
-  //   renderWithRouterAndRedux(<WalletForm />, { wallet: state.wallet });
-  //   global.fetch = jest.fn(async () => ({
-  //     json: async () => mockData,
-  //   }));
-  //   const addExpense = screen.getByRole('button', { name: /adicionar despesa/i });
-  //   userEvent.click(addExpense);
-  //   expect(global.fecth).toBeCalled();
-  // });
+  it('Verifica se a função é chamada', () => {
+    renderWithRouterAndRedux(<WalletForm />, { wallet: state.wallet });
+    global.fetch = jest.fn(async () => ({
+      json: async () => mockData,
+    }));
+    const addExpense = screen.getByRole('button', { name: /adicionar despesa/i });
+    userEvent.click(addExpense);
+    expect(global.fetch).toBeCalled();
+    expect(global.fetch).toHaveBeenCalledWith('https://economia.awesomeapi.com.br/json/all');
+  });
 });

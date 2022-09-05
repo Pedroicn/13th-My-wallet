@@ -10,15 +10,7 @@ describe('Testa o componente Login', () => {
     const loginButton = screen.getByRole('button', { name: /Entrar/i });
     expect(loginButton).toBeInTheDocument();
   });
-  // it('Verifica se existe um campo de email', () => {
-  //   renderWithRouterAndRedux(<Login />);
-  //   const emailInput = screen.getByTestId('email-input');
-  //   expect(emailInput).toBeInTheDocument();
-  // });
-  // it('Verifica se existe um campo de senha', () => {
-  //   renderWithRouterAndRedux(<Login />);
-  //   expect(passwordInput).toBeInTheDocument();
-  // });
+
   it('Verifica se ao clicar no botão é redirecionado para /carteira', () => {
     const { history } = renderWithRouterAndRedux(<App />);
     const emailInput = screen.getByTestId('email-input');
