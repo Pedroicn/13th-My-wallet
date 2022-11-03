@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getUserAction } from '../redux/actions';
+import carteira from '../img/carteira.png';
 
 class Login extends React.Component {
   constructor() {
@@ -42,36 +43,45 @@ class Login extends React.Component {
     const { email, senha, isDisable } = this.state;
     return (
       <form onSubmit={ this.handleSubmit } className="login-form">
-        <label htmlFor="email">
-          E-mail:
-          <input
-            data-testid="email-input"
-            name="email"
-            id="email"
-            type="email"
-            value={ email }
-            onChange={ this.handleChange }
-          />
-        </label>
-
-        <label htmlFor="senha">
-          Senha:
-          <input
-            data-testid="password-input"
-            name="senha"
-            id="senha"
-            type="password"
-            value={ senha }
-            onChange={ this.handleChange }
-          />
-        </label>
-
-        <button
-          disabled={ isDisable }
-          type="submit"
-        >
-          Entrar
-        </button>
+        <div className="loginImg">
+          <img src={ carteira } alt="carteira" />
+        </div>
+        <h1 className="loginTitle">TrybeWallet</h1>
+        <div>
+          <label htmlFor="email">
+            E-mail:
+            <input
+              data-testid="email-input"
+              name="email"
+              id="email"
+              type="email"
+              value={ email }
+              onChange={ this.handleChange }
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="senha">
+            Senha:
+            <input
+              data-testid="password-input"
+              name="senha"
+              id="senha"
+              type="password"
+              value={ senha }
+              onChange={ this.handleChange }
+            />
+          </label>
+        </div>
+        <div>
+          <button
+            className="buttons"
+            disabled={ isDisable }
+            type="submit"
+          >
+            Entrar
+          </button>
+        </div>
       </form>
     );
   }

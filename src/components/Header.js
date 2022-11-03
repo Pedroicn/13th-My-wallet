@@ -8,7 +8,7 @@ class Header extends Component {
     const { expenses } = this.props;
     expenses.forEach((item) => {
       const expenseValue = Number(item.value);
-      // const { coin } = item;
+
       const expenseAsk = item.exchangeRates[item.currency].ask;
       sum += expenseValue * expenseAsk;
     });
@@ -18,10 +18,15 @@ class Header extends Component {
   render() {
     const { email } = this.props;
     return (
-      <header>
-        <p data-testid="header-currency-field">BRL</p>
-        <p data-testid="total-field">{ this.somaDespesas() }</p>
-        <p data-testid="email-field">{ email }</p>
+      <header className="header">
+        <div className="headerTitle">
+          <h2>TrybeWallet</h2>
+        </div>
+        <div className="headerInfo">
+          <p data-testid="header-currency-field">BRL</p>
+          <p data-testid="total-field">{ `R$ ${this.somaDespesas()}`}</p>
+          <p data-testid="email-field">{ email }</p>
+        </div>
       </header>
     );
   }

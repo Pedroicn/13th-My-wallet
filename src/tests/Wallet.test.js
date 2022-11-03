@@ -175,5 +175,17 @@ describe('testa a page Wallet', () => {
     userEvent.click(addExpense);
     expect(global.fetch).toBeCalled();
     expect(global.fetch).toHaveBeenCalledWith('https://economia.awesomeapi.com.br/json/all');
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    const selectCurrency = screen.getAllByRole('combobox');
+    expect(selectCurrency[0]).toBeInTheDocument();
+  });
+  it('testa se a o clicar no botão a função handleExpenses é chamada', () => {
+    renderWithRouterAndRedux(<WalletForm />);
+    global.fetch = jest.fn(() => Promise.resolve({
+      json: () => Promise.resolve(mockData),
+    }));
+    const addExpense = screen.getByRole('button', { name: /adicionar despesa/i });
+    userEvent.click(addExpense);
+    expect(global.fetch).toHaveBeenCalled();
   });
 });

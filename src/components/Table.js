@@ -29,8 +29,8 @@ class Table extends Component {
     const { expenses } = this.props;
     return (
       <section>
-        <h3>Despesas</h3>
-        <table border="1">
+        <h3 className="tableTitle">Despesas</h3>
+        <table className="table" border="1">
           <thead>
             <tr>
               <th>Descrição</th>
@@ -46,35 +46,36 @@ class Table extends Component {
           </thead>
           <tbody>
             {
-              expenses.length === 0 ? <tr>Não há despesas</tr>
-                : expenses.map((expense) => (
-                  <tr key={ expense.id }>
-                    <td>{ expense.description }</td>
-                    <td>{ expense.tag }</td>
-                    <td>{ expense.method }</td>
-                    <td>{ Number(expense.value).toFixed(2) }</td>
-                    <td>{ expense.exchangeRates[expense.currency].name }</td>
-                    <td>{ this.renderizaCambio(expense) }</td>
-                    <td>{ this.renderizaConvercao(expense) }</td>
-                    <td>Real</td>
-                    <td>
-                      <button
-                        onClick={ () => this.editExpense(expense.id) }
-                        data-testid="edit-btn"
-                        type="button"
-                      >
-                        Editar
-                      </button>
-                      <button
-                        data-testid="delete-btn"
-                        type="button"
-                        onClick={ () => this.deleteExpense(expense.id) }
-                      >
-                        Excluir
-                      </button>
-                    </td>
-                  </tr>
-                ))
+              expenses.map((expense) => (
+                <tr key={ expense.id }>
+                  <td>{ expense.description }</td>
+                  <td>{ expense.tag }</td>
+                  <td>{ expense.method }</td>
+                  <td>{ Number(expense.value).toFixed(2) }</td>
+                  <td>{ expense.exchangeRates[expense.currency].name }</td>
+                  <td>{ this.renderizaCambio(expense) }</td>
+                  <td>{ this.renderizaConvercao(expense) }</td>
+                  <td>Real</td>
+                  <td>
+                    <button
+                      className="buttons"
+                      onClick={ () => this.editExpense(expense.id) }
+                      data-testid="edit-btn"
+                      type="button"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      className="buttons"
+                      data-testid="delete-btn"
+                      type="button"
+                      onClick={ () => this.deleteExpense(expense.id) }
+                    >
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))
             }
           </tbody>
         </table>
