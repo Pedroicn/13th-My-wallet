@@ -11,6 +11,6 @@ npm install
 npm start
 
 ## 4 - Para testar você deve:
- *Inserir um email no formato válido: exemplo@exemplo.com
- *Inserir uma senha com 6 ou mais caracteres
+ #### Inserir um email no formato válido: exemplo@exemplo.com
+ #### Inserir uma senha com 6 ou mais caracteres
 
